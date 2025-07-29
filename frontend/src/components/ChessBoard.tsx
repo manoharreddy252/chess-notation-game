@@ -8,13 +8,11 @@ interface ChessBoardProps {
     correct: boolean;
     square: string;
   };
-  highlightSquare?: string;
 }
 
 const ChessBoard: React.FC<ChessBoardProps> = ({ 
   onSquareClick, 
-  feedback, 
-  highlightSquare 
+  feedback
 }) => {
   const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
   const ranks = ['8', '7', '6', '5', '4', '3', '2', '1'];
@@ -25,9 +23,7 @@ const ChessBoard: React.FC<ChessBoardProps> = ({
     
     let classes = `chess-square ${isLight ? 'light' : 'dark'}`;
     
-    if (highlightSquare === square) {
-      classes += ' highlighted';
-    }
+
     
     if (feedback.show && feedback.square === square) {
       classes += feedback.correct ? ' correct' : ' incorrect';
@@ -37,35 +33,59 @@ const ChessBoard: React.FC<ChessBoardProps> = ({
   };
 
   return (
-    <motion.div
-      className="chess-board"
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.5, type: "spring" }}
-    >
-      {ranks.map((rank) =>
-        files.map((file) => {
-          const square = `${file}${rank}`;
-          return (
-            <motion.div
-              key={square}
-              className={getSquareClass(file, rank)}
-              onClick={() => onSquareClick(square)}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ 
-                delay: (files.indexOf(file) + ranks.indexOf(rank)) * 0.02,
-                duration: 0.3 
-              }}
-            >
-              {square}
-            </motion.div>
-          );
-        })
-      )}
-    </motion.div>
+    <div className="chess-board-wrapper">
+      <div className="chess-board-container">
+        {/* Rank labels (left side) */}
+        <div className="board-labels">
+          {ranks.map((rank) => (
+            <div key={rank}>{rank}</div>
+          ))}
+        </div>
+        
+        {/* Chess board */}
+        <motion.div
+          className="chess-board"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5, type: "spring" }}
+        >
+          {ranks.map((rank) =>
+            files.map((file) => {
+              const square = `${file}${rank}`;
+              return (
+                <motion.div
+                  key={square}
+                  className={getSquareClass(file, rank)}
+                  onClick={() => onSquareClick(square)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ 
+                    delay: (files.indexOf(file) + ranks.indexOf(rank)) * 0.02,
+                    duration: 0.3 
+                  }}
+                />
+              );
+            })
+          )}
+        </motion.div>
+        
+        {/* Rank labels (right side) */}
+        <div className="board-labels">
+          {ranks.map((rank) => (
+            <div key={rank}>{rank}</div>
+          ))}
+        </div>
+      </div>
+      
+      {/* File labels (bottom) */}
+      <div className="board-files">
+        {files.map((file) => (
+          <div key={file}>{file}</div>
+        ))}
+      </div>
+    </div>
   );
 };
 

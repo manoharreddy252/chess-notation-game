@@ -128,7 +128,6 @@ function App() {
               <ChessBoard
                 onSquareClick={handleSquareClick}
                 feedback={feedback}
-                highlightSquare={gameState.currentMove?.square}
               />
             </div>
           </>

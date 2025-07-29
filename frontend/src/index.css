@@ -16,8 +16,8 @@ body {
 
 /* Chess board colors */
 :root {
-  --light-square: #f0d9b5;
-  --dark-square: #b58863;
+  --light-square: #ffffff;
+  --dark-square: #000000;
   --highlight: #ffff00;
   --correct: #4ade80;
   --incorrect: #ef4444;
@@ -61,12 +61,29 @@ body {
   border-radius: 16px;
 }
 
-/* Chess board */
+/* Chess board container */
+.chess-board-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.chess-board-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .chess-board {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
-  aspect-ratio: 1;
+  width: 80vmin;
+  height: 80vmin;
+  max-width: 600px;
+  max-height: 600px;
   border: 4px solid #8b4513;
   border-radius: 8px;
   overflow: hidden;
@@ -74,11 +91,6 @@ body {
 }
 
 .chess-square {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 600;
-  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -91,13 +103,11 @@ body {
 }
 
 .chess-square.light {
-  background-color: var(--light-square);
-  color: #8b4513;
+  background-color: #ffffff;
 }
 
 .chess-square.dark {
-  background-color: var(--dark-square);
-  color: #f5f5dc;
+  background-color: #000000;
 }
 
 .chess-square.highlighted {
@@ -191,14 +201,47 @@ body {
 }
 
 /* Responsive design */
+/* Board labels */
+.board-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 80vmin;
+  max-height: 600px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.board-files {
+  display: flex;
+  justify-content: space-around;
+  width: 80vmin;
+  max-width: 600px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
 @media (max-width: 768px) {
   .chess-board {
-    max-width: 90vw;
-    max-height: 90vw;
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 500px;
+    max-height: 500px;
   }
   
-  .chess-square {
-    font-size: 0.7rem;
+  .board-labels {
+    height: 90vmin;
+    max-height: 500px;
+    font-size: 1.2rem;
+  }
+  
+  .board-files {
+    width: 90vmin;
+    max-width: 500px;
+    font-size: 1.2rem;
   }
   
   .notation {
@@ -215,8 +258,12 @@ body {
 }
 
 @media (max-width: 480px) {
-  .chess-square {
-    font-size: 0.6rem;
+  .board-labels {
+    font-size: 1rem;
+  }
+  
+  .board-files {
+    font-size: 1rem;
   }
   
   .notation {
