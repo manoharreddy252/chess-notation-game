@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/chess-notation-game/static/css/main.4e400f51.css",
-    "main.js": "/chess-notation-game/static/js/main.ca54359d.js",
+    "main.css": "/chess-notation-game/static/css/main.360763e5.css",
+    "main.js": "/chess-notation-game/static/js/main.7ec013cb.js",
     "static/js/453.670e15c7.chunk.js": "/chess-notation-game/static/js/453.670e15c7.chunk.js",
     "index.html": "/chess-notation-game/index.html",
-    "main.4e400f51.css.map": "/chess-notation-game/static/css/main.4e400f51.css.map",
-    "main.ca54359d.js.map": "/chess-notation-game/static/js/main.ca54359d.js.map",
+    "main.360763e5.css.map": "/chess-notation-game/static/css/main.360763e5.css.map",
+    "main.7ec013cb.js.map": "/chess-notation-game/static/js/main.7ec013cb.js.map",
     "453.670e15c7.chunk.js.map": "/chess-notation-game/static/js/453.670e15c7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e400f51.css",
-    "static/js/main.ca54359d.js"
+    "static/css/main.360763e5.css",
+    "static/js/main.7ec013cb.js"
   ]
 }
